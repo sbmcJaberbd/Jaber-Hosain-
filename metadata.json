@@ -1,0 +1,6 @@
+{
+  "name": "Md Jaber Hosain - Personal Portfolio & Digital Hub",
+  "description": "A premium, modern personal portfolio, digital garden, command center, and interactive visitor advice hub for Md Jaber Hosain.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

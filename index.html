@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var origFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : null;
+          var currentFetch = origFetch;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return currentFetch;
+              },
+              set: function (fn) {
+                currentFetch = fn;
+              }
+            });
+          } catch (e) {}
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              var desc = Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+              if (!desc || !desc.set) {
+                Object.defineProperty(Window.prototype, 'fetch', {
+                  configurable: true,
+                  enumerable: desc ? desc.enumerable : true,
+                  get: function () {
+                    return currentFetch;
+                  },
+                  set: function (fn) {
+                    currentFetch = fn;
+                  }
+                });
+              }
+            } catch (e) {}
+          }
+        } catch (err) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MD JABER HOSAIN — Software Engineer, Web Developer & Designer</title>
+    <meta name="description" content="Official personal website, digital garden, portfolio, and creative hub of Md Jaber Hosain." />
+    <meta property="og:title" content="MD JABER HOSAIN — Portfolio & Personal Digital Hub" />
+    <meta property="og:description" content="Explore projects, skills, journey, digital garden, and interactive visitor advice hub of Md Jaber Hosain." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
